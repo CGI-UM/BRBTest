@@ -41,13 +41,7 @@ define(["jquery","backbone", "nunjucks", "models/Surfboard", "views/SurfboardVie
             },
 
             renderHeader: function() {
-                var str = nunjucks.render('stockTableHeader.html', {
-                    a: "Manufacturer",
-                    b: "Model",
-                    c: "In Stock",
-                    d: "Our Cost",
-                    e: "Purchase Price"
-                });
+                var str = nunjucks.render('stockTableHeader.html');
                 $("table.stockTable").append(str);
 
             }
