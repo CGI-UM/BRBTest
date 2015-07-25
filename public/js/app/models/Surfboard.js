@@ -19,7 +19,7 @@ define(["jquery", "backbone"],
 
             // Model Constructor
             initialize: function () {
-                this.set({purchasePrice: (this.get('wholesale') * 1.9).toFixed(2)});
+                this.set({purchasePrice: (this.get('wholesale') * (1+this.get('margin'))).toFixed(2)});
             },
 
             // Gets called automatically by Backbone when the set and/or save methods

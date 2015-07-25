@@ -3,24 +3,28 @@
     "manufacturer": "O'Neill",
     "model": "Slash",
     "stock": "10",
-    "wholesale": "101.17"
+    "wholesale": "101.17",
+    "margin": 0.89
   },
   {
     "manufacturer": "WetLife",
     "model": "LightBoard",
     "stock": "12",
-    "wholesale": "188.91"
+    "wholesale": "188.91",
+    "margin": 1.05
   },
   {
     "manufacturer": "Burner",
     "model": "Blaze",
     "stock": "7",
-    "wholesale": "210.30"
+    "wholesale": "210.30",
+    "margin": 0.93
   },
   {
     "manufacturer": "Burner",
     "model": "FireLight",
     "stock": "13",
-    "wholesale": "166.05"
+    "wholesale": "166.05",
+    "margin": 0.93
   }
 ]
