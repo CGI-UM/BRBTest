@@ -12,6 +12,7 @@ table.stockTable {
 
 table.stockTable tr {
     border-left: 1px solid #149bdf;
+    border-right: 1px solid #149bdf;
 }
 
 table.stockTable th {
@@ -28,6 +29,11 @@ table.stockTable td {
 }
 
 table.stockTable td.numeric {
+    text-align: right;
+}
+
+input[type="text"] {
+    padding-right: 10px;
     text-align: right;
 }
 

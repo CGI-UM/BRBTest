@@ -5,7 +5,7 @@ define(["jquery","backbone", "nunjucks", "models/Surfboard", "views/SurfboardVie
 
     function($, Backbone, nunjucks, Surfboard, SurfboardView) {
         return Backbone.Collection.extend({
-            url: "../json/stock.json",
+            url: "../data/stock.json",
             model: Surfboard,
             firstPass: true,
 

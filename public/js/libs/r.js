@@ -8368,7 +8368,7 @@ parseStatement: true, parseSourceElement: true */
         return program;
     }
 
-    // Sync with package.json.
+    // Sync with package.data.
     exports.version = '1.0.4';
 
     exports.parse = parse;

@@ -14,12 +14,21 @@ define(["jquery", "backbone"],
                 model: '',
                 stock: 0,
                 wholesale: 0,
-                purchasePrice: 0
+                margin: 0,
+                purchasePrice: 0,
+                netProfit: 0
             },
 
             // Model Constructor
             initialize: function () {
-                this.set({purchasePrice: (this.get('wholesale') * (1+this.get('margin'))).toFixed(2)});
+                var w = this.get('wholesale');
+                var m = this.get('margin') / 100;
+                var purchasePrice = (w * (1+m)).toFixed(2);
+                var np = (purchasePrice - w).toFixed(2);
+                this.set({
+                    purchasePrice: purchasePrice,
+                    netProfit: np
+                });
             },
 
             // Gets called automatically by Backbone when the set and/or save methods

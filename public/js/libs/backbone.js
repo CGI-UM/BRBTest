@@ -41,7 +41,7 @@
   var slice = array.slice;
   var splice = array.splice;
 
-  // Current version of the library. Keep in sync with `package.json`.
+  // Current version of the library. Keep in sync with `package.data`.
   Backbone.VERSION = '1.1.1';
 
   // For Backbone's purposes, jQuery, Zepto, Ender, or My Library (kidding) owns
@@ -61,7 +61,7 @@
   Backbone.emulateHTTP = false;
 
   // Turn on `emulateJSON` to support legacy servers that can't deal with direct
-  // `application/json` requests ... will encode the body as
+  // `application/data` requests ... will encode the body as
   // `application/x-www-form-urlencoded` instead and will send the model in a
   // form param named `model`.
   Backbone.emulateJSON = false;
@@ -1127,7 +1127,7 @@
   // Turn on `Backbone.emulateHTTP` in order to send `PUT` and `DELETE` requests
   // as `POST`, with a `_method` parameter containing the true HTTP method,
   // as well as all requests with the body as `application/x-www-form-urlencoded`
-  // instead of `application/json` with the model in a param named `model`.
+  // instead of `application/data` with the model in a param named `model`.
   // Useful when interfacing with server-side languages like **PHP** that make
   // it difficult to read the body of `PUT` requests.
   Backbone.sync = function(method, model, options) {
@@ -1149,7 +1149,7 @@
 
     // Ensure that we have the appropriate request data.
     if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
-      params.contentType = 'application/json';
+      params.contentType = 'application/data';
       params.data = JSON.stringify(options.attrs || model.toJSON(options));
     }
 
