@@ -1,12 +1,14 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Model", "views/View", "collections/Collection"],
+define(["jquery", "backbone", "nunjucks", "models/Surfboard", "views/SurfboardView", "collections/SurfboardCollection"],
 
-    function($, Backbone, Model, View, Collection) {
+    function ($, Backbone, nunjucks, Surfboard, SurfboardView, SurfboardCollection) {
 
-        var DesktopRouter = Backbone.Router.extend({
+        return Backbone.Router.extend({
 
-            initialize: function() {
+            initialize: function () {
+
+                nunjucks.configure('/js/app/templates', {autoescape: true});
 
                 // Tells Backbone to start watching for hashchange events
                 Backbone.history.start();
@@ -21,18 +23,14 @@ define(["jquery", "backbone", "models/Model", "views/View", "collections/Collect
 
             },
 
-            index: function() {
+            index: function () {
 
                 // Instantiates a new view which will render the header text to the page
-                new View();
+                var surfboardStock = new SurfboardCollection();
 
+                // fetch() the surf board stock info from storage
+                surfboardStock.fetch();
             }
-
         });
-
-        // Returns the DesktopRouter class
-        return DesktopRouter;
-
     }
-
 );

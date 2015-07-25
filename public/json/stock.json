@@ -1,0 +1,26 @@
+[
+  {
+    "manufacturer": "O'Neill",
+    "model": "Slash",
+    "stock": "10",
+    "wholesale": "101.17"
+  },
+  {
+    "manufacturer": "WetLife",
+    "model": "LightBoard",
+    "stock": "12",
+    "wholesale": "188.91"
+  },
+  {
+    "manufacturer": "Burner",
+    "model": "Blaze",
+    "stock": "7",
+    "wholesale": "210.30"
+  },
+  {
+    "manufacturer": "Burner",
+    "model": "FireLight",
+    "stock": "13",
+    "wholesale": "166.05"
+  }
+]

@@ -21,6 +21,8 @@ require.config({
 
       "backbone": "../libs/backbone",
 
+      "nunjucks": "../libs/nunjucks.min",
+
       // Plugins
       // -------
       "backbone.validateAll": "../libs/plugins/Backbone.validateAll",

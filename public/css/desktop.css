@@ -1,3 +1,33 @@
 /* desktop.css */
 @import url("bootstrap.css");
 @import url("commonstyles.css");
+
+table.stockTable {
+    border-bottom: 1px solid #149bdf;
+}
+
+.headerSeparator {
+    border-right: 1px solid white;
+}
+
+table.stockTable tr {
+    border-left: 1px solid #149bdf;
+}
+
+table.stockTable th {
+    background-color: #149bdf;
+    color: white;
+    text-align: center;
+    padding: 8px 15px;
+}
+
+table.stockTable td {
+    padding-left: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #149bdf;
+}
+
+table.stockTable td.numeric {
+    text-align: right;
+}
+
