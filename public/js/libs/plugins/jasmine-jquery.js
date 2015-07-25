@@ -227,7 +227,7 @@ jasmine.getJSONFixtures = function() {
 
 jasmine.JSONFixtures = function() {
   this.fixturesCache_ = {}
-  this.fixturesPath = 'spec/javascripts/fixtures/json'
+  this.fixturesPath = 'spec/javascripts/fixtures/data'
 }
 
 jasmine.JSONFixtures.prototype.load = function() {
