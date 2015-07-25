@@ -1,0 +1,30 @@
+[
+  {
+    "manufacturer": "ONeill",
+    "model": "Slash",
+    "stock": "10",
+    "wholesale": "101.17",
+    "margin": 89
+  },
+  {
+    "manufacturer": "WetLife",
+    "model": "LightBoard",
+    "stock": "12",
+    "wholesale": "188.91",
+    "margin": 105
+  },
+  {
+    "manufacturer": "Burner",
+    "model": "Blaze",
+    "stock": "7",
+    "wholesale": "210.30",
+    "margin": 93
+  },
+  {
+    "manufacturer": "Burner",
+    "model": "FireLight",
+    "stock": "13",
+    "wholesale": "166.05",
+    "margin": 93
+  }
+]
