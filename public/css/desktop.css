@@ -24,7 +24,7 @@ table.stockTable th {
 table.stockTable td {
     padding-left: 15px;
     padding-right: 15px;
-    border-right: 1px solid #149bdf;
+    border-right: 1px solid #EBEBFF;
 }
 
 table.stockTable td.numeric {
