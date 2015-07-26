@@ -44,29 +44,50 @@ define(["jquery", "backbone", "nunjucks"],
             events: function() {
                 var evObj = {};
 
-                var m1 = this.model.get('manufacturer');
-                var m2 = this.model.get('model');
-                var n = m1 + "-" + m2;
-                //evObj["change input[name=" + n + "]"] = "marginChanged";
+                //var m1 = this.model.get('manufacturer');
+                //var m2 = this.model.get('model');
+                //var n = m1 + "-" + m2;
+
                 evObj["change input[class='tdMargin']"] = "marginChanged";
+                evObj["change input[class='tdWholesale']"] = "wholesaleChanged";
 
                 return evObj;
             },
 
             marginChanged: function() {
                 // update the model based on the new margin value entered by the user.
+                var n = this.uniqueName();
+
+                var margin = $("tr." + n + " input[class='tdMargin']").val();
+                var wholesale = parseFloat(this.model.get('wholesale'));
+
+                this.storeChange(margin, wholesale);
+            },
+
+            wholesaleChanged: function() {
+                // update the model based on the new wholesale value entered by the user.
+                var n = this.uniqueName();
+
+                var wholesale = parseFloat($("tr." + n + " input[class='tdWholesale']").val()).toFixed(2);
+                var margin = parseFloat(this.model.get('margin'));
+
+                this.storeChange(margin, wholesale);
+            },
+
+            uniqueName: function() {
                 var mfgr = this.model.get('manufacturer');
                 var mdl = this.model.get('model');
-                var n = mfgr + "-" + mdl;
+                return mfgr + "-" + mdl;
+            },
 
-                var margin = parseFloat($('input[name=' + n + ']').val());
-                var wholesale = parseFloat(this.model.get('wholesale'));
+            storeChange: function(margin, wholesale) {
 
                 var retail = ((1 + (margin/100.0)) * wholesale).toFixed(2);
 
                 var netProfit = (retail - wholesale).toFixed(2);
 
                 this.model.set({
+                    wholesale: wholesale,
                     margin: margin,
                     retail: retail,
                     netProfit: netProfit

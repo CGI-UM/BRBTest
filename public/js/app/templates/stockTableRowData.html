@@ -1,7 +1,17 @@
 <td class="tdManufacturer">{{manufacturer}}</td>
 <td class="tdModel">{{model}}</td>
 <td class="tdStock numeric">{{stock}}</td>
-<td class="tdWholesale numeric">${{wholesale}}</td>
+<!--<td class="tdWholesale numeric">${{wholesale}}</td>-->
+<td class="tdWholesale numeric">
+    <input
+        class="tdWholesale"
+        name="{{manufacturer}}-{{model}}"
+        type="text"
+        maxlength="7"
+        size="7"
+        value="{{wholesale}}"
+    />
+</td>
 <td class="tdMargin numeric">
     <input
         class="tdMargin"
@@ -12,5 +22,5 @@
         value="{{margin}}"
     />
 </td>
-<td class="tdRetail numeric">${{retail}}</td>
-<td class="tdNetProfit numeric">${{netProfit}}</td>
+<td class="tdRetail numeric">{{retail}}</td>
+<td class="tdNetProfit numeric">{{netProfit}}</td>
