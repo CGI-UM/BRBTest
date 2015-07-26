@@ -11,7 +11,7 @@ define(["jquery", "backbone", "nunjucks"],
 
             // View constructor
             initialize: function() {
-                this.listenTo( this.model, "change", this.updateRow );
+                this.listenTo( this.model, "change", this.updateRowData );
 
                 // Calls the view's render method
                 this.render();
@@ -34,9 +34,9 @@ define(["jquery", "backbone", "nunjucks"],
                 return this;
             },
 
-            updateRow: function() {
-                var html = nunjucks.render('stockTableRowData.html', this.model.toJSON());
-                var sel = "." + this.model.get('manufacturer') + "-" + this.model.get('model');
+            updateRowData: function( mdl ) {
+                var sel = "." + mdl.get('manufacturer') + "-" + mdl.get('model');
+                var html = nunjucks.render('stockTableRowData.html', mdl.toJSON());
                 $(sel).html(html);
             },
 
@@ -47,7 +47,8 @@ define(["jquery", "backbone", "nunjucks"],
                 var m1 = this.model.get('manufacturer');
                 var m2 = this.model.get('model');
                 var n = m1 + "-" + m2;
-                evObj["change input[name=" + n + "]"] = "marginChanged";
+                //evObj["change input[name=" + n + "]"] = "marginChanged";
+                evObj["change input[class='tdMargin']"] = "marginChanged";
 
                 return evObj;
             },
@@ -61,13 +62,13 @@ define(["jquery", "backbone", "nunjucks"],
                 var margin = parseFloat($('input[name=' + n + ']').val());
                 var wholesale = parseFloat(this.model.get('wholesale'));
 
-                var purchasePrice = ((1 + (margin/100.0)) * wholesale).toFixed(2);
+                var retail = ((1 + (margin/100.0)) * wholesale).toFixed(2);
 
-                var netProfit = (purchasePrice - wholesale).toFixed(2);
+                var netProfit = (retail - wholesale).toFixed(2);
 
                 this.model.set({
                     margin: margin,
-                    purchasePrice: purchasePrice,
+                    retail: retail,
                     netProfit: netProfit
                 });
             }
