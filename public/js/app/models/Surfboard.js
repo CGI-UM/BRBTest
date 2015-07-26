@@ -15,7 +15,7 @@ define(["jquery", "backbone"],
                 stock: 0,
                 wholesale: 0,
                 margin: 0,
-                purchasePrice: 0,
+                retail: 0,
                 netProfit: 0
             },
 
@@ -23,10 +23,10 @@ define(["jquery", "backbone"],
             initialize: function () {
                 var w = this.get('wholesale');
                 var m = this.get('margin') / 100;
-                var purchasePrice = (w * (1+m)).toFixed(2);
-                var np = (purchasePrice - w).toFixed(2);
+                var retail = (w * (1+m)).toFixed(2);
+                var np = (retail - w).toFixed(2);
                 this.set({
-                    purchasePrice: purchasePrice,
+                    retail: retail,
                     netProfit: np
                 });
             },
