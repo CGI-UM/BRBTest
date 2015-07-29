@@ -11,7 +11,7 @@ define(["jquery", "backbone", "nunjucks"],
 
             // View constructor
             initialize: function() {
-                this.listenTo( this.model, "change", this.updateRowData );
+                this.listenTo( this.model, "change", this.reRenderTRContent );
 
                 // Calls the view's render method
                 this.render();
@@ -34,10 +34,15 @@ define(["jquery", "backbone", "nunjucks"],
                 return this;
             },
 
-            updateRowData: function( mdl ) {
+            reRenderTRContent: function( mdl ) {
+                // create the selector string
                 var sel = "." + mdl.get('manufacturer') + "-" + mdl.get('model');
-                var html = nunjucks.render('stockTableRowData.html', mdl.toJSON());
-                $(sel).html(html);
+
+                // create the data to write into the selector
+                var htmlStr = nunjucks.render('stockTableRowData.html', mdl.toJSON());
+
+                // write the html to the selector
+                $(sel).html(htmlStr);
             },
 
             // View Event Handlers
@@ -54,34 +59,34 @@ define(["jquery", "backbone", "nunjucks"],
                 return evObj;
             },
 
-            marginChanged: function() {
-                // update the model based on the new margin value entered by the user.
-                var n = this.uniqueName();
-
-                var margin = $("tr." + n + " input[class='tdMargin']").val();
-                var wholesale = parseFloat(this.model.get('wholesale'));
-
-                this.storeChange(margin, wholesale);
-            },
-
-            wholesaleChanged: function() {
-                // update the model based on the new wholesale value entered by the user.
-                var n = this.uniqueName();
-
-                var wholesale = parseFloat($("tr." + n + " input[class='tdWholesale']").val()).toFixed(2);
-                var margin = parseFloat(this.model.get('margin'));
-
-                this.storeChange(margin, wholesale);
-            },
-
-            uniqueName: function() {
+            tableRowName: function() {
                 var mfgr = this.model.get('manufacturer');
                 var mdl = this.model.get('model');
                 return mfgr + "-" + mdl;
             },
 
-            storeChange: function(margin, wholesale) {
+            marginChanged: function() {
+                // update the model based on the new margin value entered by the user.
+                var n = this.tableRowName();
+                var margin = $("tr." + n + " input[class='tdMargin']").val();
 
+                var wholesale = parseFloat(this.model.get('wholesale'));
+
+                this.setModelData(margin, wholesale);
+            },
+
+            wholesaleChanged: function() {
+                // update the model based on the new wholesale value entered by the user.
+                var n = this.tableRowName();
+                var wholesale = $("tr." + n + " input[class='tdWholesale']").val();
+                wholesale = parseFloat(wholesale).toFixed(2);
+
+                var margin = parseFloat(this.model.get('margin'));
+
+                this.setModelData(margin, wholesale);
+            },
+
+            setModelData: function(margin, wholesale) {
                 var retail = ((1 + (margin/100.0)) * wholesale).toFixed(2);
 
                 var netProfit = (retail - wholesale).toFixed(2);
