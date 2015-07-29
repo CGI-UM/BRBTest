@@ -1,8 +1,9 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "nunjucks", "../Surfboards/Surfboard", "../Surfboards/SurfboardView", "../Surfboards/SurfboardCollection"],
 
-    function ($, Backbone, nunjucks, Surfboard, SurfboardView, SurfboardCollection) {
+define(["jquery", "backbone", "nunjucks", "../Surfboards/SurfboardCollection"],
+
+    function ($, Backbone, nunjucks, SurfboardCollection) {
 
         return Backbone.Router.extend({
 
@@ -24,11 +25,11 @@ define(["jquery", "backbone", "nunjucks", "../Surfboards/Surfboard", "../Surfboa
             },
 
             index: function () {
-
-                // Instantiates a new view which will render the header text to the page
+                // create the collection to hold the surfboard stock
                 var surfboardStock = new SurfboardCollection();
 
-                // fetch() the surf board stock info from storage
+                // fetch() the surf board stock info from storage and
+                // render the stock to the surfboard table
                 surfboardStock.fetch();
             }
         });
