@@ -22,12 +22,12 @@ define(["jquery", "backbone", "nunjucks"],
                 var data = this.model.toJSON();
 
                 // Add the <tr> to the table
-                var html = nunjucks.render('stockTableRow.html', data);
+                var html = nunjucks.render('Surfboards/stockTableRow.html', data);
                 this.$el.append(html);
 
                 // fill the <tr> with all the <td>'s.
                 var sel = "." + data.manufacturer + "-" + data.model;
-                html = nunjucks.render('stockTableRowData.html', data);
+                html = nunjucks.render('Surfboards/stockTableRowData.html', data);
                 $(sel).html(html);
 
                 // Maintains chainability

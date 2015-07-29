@@ -41,7 +41,7 @@ define(["jquery","backbone", "nunjucks", "Surfboards/Surfboard", "Surfboards/Sur
             },
 
             renderHeader: function() {
-                var str = nunjucks.render('stockTableHeader.html');
+                var str = nunjucks.render('Surfboards/stockTableHeader.html');
                 $("table.stockTable").append(str);
 
             }
