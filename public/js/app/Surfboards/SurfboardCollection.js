@@ -1,7 +1,7 @@
 /**
  * Created by Jared on 7/24/2015.
  */
-define(["jquery","backbone", "nunjucks", "models/Surfboard", "views/SurfboardView"],
+define(["jquery","backbone", "nunjucks", "Surfboards/Surfboard", "Surfboards/SurfboardView"],
 
     function($, Backbone, nunjucks, Surfboard, SurfboardView) {
         return Backbone.Collection.extend({

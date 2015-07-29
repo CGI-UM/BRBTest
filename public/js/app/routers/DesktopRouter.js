@@ -1,6 +1,6 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "nunjucks", "models/Surfboard", "views/SurfboardView", "collections/SurfboardCollection"],
+define(["jquery", "backbone", "nunjucks", "../Surfboards/Surfboard", "../Surfboards/SurfboardView", "../Surfboards/SurfboardCollection"],
 
     function ($, Backbone, nunjucks, Surfboard, SurfboardView, SurfboardCollection) {
 
